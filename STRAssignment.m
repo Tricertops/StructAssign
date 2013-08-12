@@ -108,6 +108,7 @@
     view._(bounds.size.width) = 20;
     
     view._(bounds.size.width) += 20;
+    view._(bounds.size.height) = 50;
     
     view._(contentOffset.x) = 20;
     view._(contentSize.height) = 20;
@@ -159,7 +160,7 @@ STRAssignableAccessors(CGFloat, CGPoint, y, setY, y)
 @implementation STRAssignableCGSize
 
 STRAssignableAccessors(CGFloat, CGSize, width, setWidth, width)
-STRAssignableAccessors(CGFloat, CGSize, height, setheight, height)
+STRAssignableAccessors(CGFloat, CGSize, height, setHeight, height)
 
 @end
 
