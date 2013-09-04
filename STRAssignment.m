@@ -53,6 +53,15 @@
 
 @end
 
+@interface STRAssignableUIEdgeInsets : STRAssignable
+
+@property (nonatomic, readwrite, assign) CGFloat top;
+@property (nonatomic, readwrite, assign) CGFloat left;
+@property (nonatomic, readwrite, assign) CGFloat bottom;
+@property (nonatomic, readwrite, assign) CGFloat right;
+
+@end
+
 @implementation STRAssignment
 
 + (instancetype)current {
@@ -82,6 +91,9 @@
     }
     else if (strcmp(value.objCType, @encode(CGSize)) == 0) {
         self.assignable = [[STRAssignableCGSize alloc] initWithObject:self.object key:self.firstKey];
+    }
+    else if (strcmp(value.objCType, @encode(UIEdgeInsets)) == 0) {
+        self.assignable = [[STRAssignableUIEdgeInsets alloc] initWithObject:self.object key:self.firstKey];
     }
 }
 
@@ -181,5 +193,14 @@ STRAssignableAccessors(CGPoint, CGRect, rawOrigin, setRawOrigin, origin)
 STRAssignableAccessors(CGFloat, CGRect, width, setWidth, size.width)
 STRAssignableAccessors(CGFloat, CGRect, height, setHeight, size.height)
 STRAssignableAccessors(CGSize, CGRect, rawSize, setRawSize, size)
+
+@end
+
+@implementation STRAssignableUIEdgeInsets
+
+STRAssignableAccessors(CGFloat, UIEdgeInsets, top, setTop, top)
+STRAssignableAccessors(CGFloat, UIEdgeInsets, left, setLeft, left)
+STRAssignableAccessors(CGFloat, UIEdgeInsets, bottom, setBottom, bottom)
+STRAssignableAccessors(CGFloat, UIEdgeInsets, right, setRight, right)
 
 @end
